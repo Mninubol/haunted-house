@@ -1,9 +1,9 @@
 extends Control
 
 var story = "Hello my name is %s I think is %s I %s I think %s I thing %s"
-var answers = ["Max" , "No" , "Never" , "Run" , "Survive"]
+var answers = []
 var questions = []
-
+var question_number = 0
 
 func _ready():
 	$"VBoxContainer/DisplayText".text = "Welcome to the haunted house \nWhat is your name?"
@@ -13,14 +13,34 @@ func _ready():
 	questions.append("Have you ever encountered a ghost?")
 	questions.append("What will you do when encountering it?")
 	questions.append("Do you think you will survive until the morning?")
-	print(questions)
-	print(len(questions))
-	print(questions[0]) #first question 
-	print(questions[1])
-	print(questions[2])
-	print(questions[3])
-	print(questions[4])
-
+	$VBoxContainer/DisplayText.text = questions[0]
 
 func _on_TextureButton_pressed():
-	$"VBoxContainer/DisplayText".text = $"TextEdit".text
+	
+	if question_number == 0:
+		# answer the questions
+		answers.append( $PlayerInput.text )
+		print( answers )
+		$VBoxContainer/DisplayText.text = questions[1]
+		$PlayerInput.text = ""
+	
+	# pause
+	if question_number == 1:
+		answers.append( $PlayerInput.text )
+		print( answers )
+		$VBoxContainer/DisplayText.text = questions[2]
+		$PlayerInput.text = ""
+	
+	if question_number == 2:
+		answers.append( $PlayerInput.text )
+		print( answers )
+		$VBoxContainer/DisplayText.text = questions[3]
+		$PlayerInput.text = ""
+		
+	if question_number == 3:
+		answers.append( $PlayerInput.text )
+		print( answers )
+		$VBoxContainer/DisplayText.text = questions[4]
+		$PlayerInput.text = ""
+
+	question_number += 1
