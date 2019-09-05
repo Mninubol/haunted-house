@@ -42,5 +42,12 @@ func _on_TextureButton_pressed():
 		print( answers )
 		$VBoxContainer/DisplayText.text = questions[4]
 		$PlayerInput.text = ""
+		
+	if question_number == 4:
+		answers.append( $PlayerInput.text )
+		print( answers )
+		$VBoxContainer/DisplayText.text = story % answers
+		$PlayerInput.text = ""
+	
 
-	question_number += 1
+	question_number = question_number+1
